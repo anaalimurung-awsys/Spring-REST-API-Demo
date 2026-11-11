@@ -23,9 +23,9 @@ public class StudentRestController {
     public void initialize() {
         studs = new ArrayList<>();
         
-        studs.add(new Student("Juuzou", "Suzuya"));
-        studs.add(new Student("Muichirou", "Tokitou"));
-        studs.add(new Student("Yuichirou", "Tokitou"));
+        // studs.add(new Student("Juuzou", "Suzuya"));
+        // studs.add(new Student("Muichirou", "Tokitou"));
+        // studs.add(new Student("Yuichirou", "Tokitou"));
     }
 
     @GetMapping("/students")
