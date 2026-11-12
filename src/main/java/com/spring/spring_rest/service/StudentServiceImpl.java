@@ -11,6 +11,10 @@ import com.spring.spring_rest.exception.StudentNotFoundException;
 import com.spring.spring_rest.mapper.StudentMapper;
 import com.spring.spring_rest.repository.StudentRepository;
 
+/**
+ * 
+ * StudentServiceImpl
+ */
 @Service 
 public class StudentServiceImpl implements StudentService {
 
@@ -56,6 +60,21 @@ public class StudentServiceImpl implements StudentService {
         return studs.stream().map(
             (student) -> StudentMapper.mapToStudentDto(student)).
             collect(Collectors.toList());
+    }
+
+    @Override
+    public StudentDto updateStudent(Long id, StudentDto studDto) {
+        Student stud = studRepo.findById((id)).orElseThrow(() -> 
+                                        new StudentNotFoundException("Student " 
+                                        + id + " not found."));
+
+        stud.setFirstName(studDto.getFirstName());
+        stud.setLastName(studDto.getLastName());
+        stud.setEmail(studDto.getEmail());
+
+        Student saved = studRepo.save(stud);
+
+        return StudentMapper.mapToStudentDto(saved);
     }
     
     

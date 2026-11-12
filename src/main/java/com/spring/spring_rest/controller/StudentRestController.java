@@ -1,6 +1,5 @@
 package com.spring.spring_rest.controller;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.http.HttpStatus;
@@ -13,6 +12,7 @@ import org.springframework.web.bind.annotation.RestController;
 import com.spring.spring_rest.dto.StudentDto;
 import com.spring.spring_rest.entity.Student;
 // import com.spring.spring_rest.entity.Student;
+// import com.spring.spring_rest.entity.Student;
 // import com.spring.spring_rest.exception.StudentNotFoundException;
 import com.spring.spring_rest.service.StudentService;
 
@@ -20,9 +20,14 @@ import jakarta.validation.Valid;
 
 // import jakarta.annotation.PostConstruct;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 
 
+/**
+ * 
+ * StudentRestController
+ */
 @RestController 
 @RequestMapping ("/api/students")
 public class StudentRestController {
@@ -34,7 +39,7 @@ public class StudentRestController {
     }
 
     /**
-     * 
+     * Method to store data to the database via Postman
      * @param studDto
      * @return
      */
@@ -46,7 +51,7 @@ public class StudentRestController {
     }
     
     /**
-     * 
+     * Method to get data by id.
      * @param id
      * @return
      */
@@ -58,7 +63,7 @@ public class StudentRestController {
     }
 
     /**
-     * 
+     * Method to get all the students in the database.
      * @return
      */
     @GetMapping 
@@ -66,5 +71,18 @@ public class StudentRestController {
         List<StudentDto> studs = studService.getAllStudents();
 
         return ResponseEntity.ok(studs);
+    }
+
+    /**
+     * Method to update data via id and entity.
+     * @param id
+     * @param studDto
+     * @return
+     */
+    @PutMapping("{id}")
+    public ResponseEntity<StudentDto> updateStudent(@PathVariable Long id,
+                                                    @Valid @RequestBody StudentDto studDto){
+        StudentDto stud = studService.updateStudent(id, studDto);
+        return ResponseEntity.ok(stud);
     }
 }
