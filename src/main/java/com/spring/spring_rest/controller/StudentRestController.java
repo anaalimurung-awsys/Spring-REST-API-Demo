@@ -4,7 +4,9 @@ import java.util.List;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PatchMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -81,8 +83,34 @@ public class StudentRestController {
      */
     @PutMapping("{id}")
     public ResponseEntity<StudentDto> updateStudent(@PathVariable Long id,
-                                                    @Valid @RequestBody StudentDto studDto){
+                            @Valid @RequestBody StudentDto studDto) {
         StudentDto stud = studService.updateStudent(id, studDto);
         return ResponseEntity.ok(stud);
+    }
+
+    /**
+     * Method to modify specified parts of the data from the database.
+     * @param id
+     * @param studDto
+     * @return
+     */
+    @PatchMapping ("{id}")
+    public ResponseEntity<StudentDto> patchStudent(@PathVariable Long id,
+                            @Valid @RequestBody StudentDto studDto) {
+        StudentDto stud = studService.patchStudent(id, studDto);
+        
+        return ResponseEntity.ok(stud);
+    }
+
+    /**
+     * Method to delete data by id.
+     * @param id
+     * @return
+     */
+    @DeleteMapping ("{id}")
+    public ResponseEntity<String> deleteStudentById(@PathVariable Long id) {
+        studService.deleteStudentById(id);
+
+        return ResponseEntity.ok("Student data deleted successfully");
     }
 }

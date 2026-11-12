@@ -15,4 +15,8 @@ public interface StudentService {
     List<StudentDto> getAllStudents();
 
     StudentDto updateStudent(Long id, StudentDto studDto);
+
+    StudentDto patchStudent(Long id, StudentDto studDto);
+
+    void deleteStudentById(Long id);
 }

@@ -76,6 +76,37 @@ public class StudentServiceImpl implements StudentService {
 
         return StudentMapper.mapToStudentDto(saved);
     }
+
+    @Override
+    public StudentDto patchStudent(Long id, StudentDto studDto) {
+        Student stud = studRepo.findById(id).
+                        orElseThrow(() -> 
+                            new StudentNotFoundException("Student " 
+                            + id + " not found."));
+        
+        if(studDto.getFirstName() != null) 
+            stud.setFirstName(studDto.getFirstName());
+
+        if(studDto.getLastName() != null)
+            stud.setLastName(studDto.getLastName());
+
+        if(studDto.getEmail() != null)
+            stud.setEmail(studDto.getEmail());
+
+        Student saved = studRepo.save(stud);
+
+        return StudentMapper.mapToStudentDto(saved);
+    }
+
+    @Override
+    public void deleteStudentById(Long id) {
+        studRepo.findById(id).orElseThrow(() ->
+                        new StudentNotFoundException(
+                            "Student " 
+                            + id + " not found."
+                        ));
+        studRepo.deleteById(id);
+    }
     
     
 }
