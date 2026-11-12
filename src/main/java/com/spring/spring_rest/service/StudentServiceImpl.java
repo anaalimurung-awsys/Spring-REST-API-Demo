@@ -1,9 +1,13 @@
 package com.spring.spring_rest.service;
 
+import java.util.List;
+import java.util.stream.Collectors;
+
 import org.springframework.stereotype.Service;
 
 import com.spring.spring_rest.dto.StudentDto;
 import com.spring.spring_rest.entity.Student;
+import com.spring.spring_rest.exception.StudentNotFoundException;
 import com.spring.spring_rest.mapper.StudentMapper;
 import com.spring.spring_rest.repository.StudentRepository;
 
@@ -16,7 +20,15 @@ public class StudentServiceImpl implements StudentService {
         this.studRepo = studRepo;
     }
 
+    public StudentRepository getStudRepo() {
+        return studRepo;
+    }
     
+    public void setStudRepo(StudentRepository studRepo) {
+        this.studRepo = studRepo;
+    }
+    
+
     @Override
     public StudentDto createStudent(StudentDto studDto) {
         // converting StudentDto to Student entity
@@ -27,15 +39,24 @@ public class StudentServiceImpl implements StudentService {
         return StudentMapper.mapToStudentDto(saved);
     }
 
-
-    public StudentRepository getStudRepo() {
-        return studRepo;
+    @Override
+    public StudentDto getStudentById(Long id) {
+       Student stud = studRepo.findById(id).
+                        orElseThrow(() -> 
+                        new StudentNotFoundException("Student " 
+                            + id + " not found."));
+        
+        return StudentMapper.mapToStudentDto(stud);
     }
 
+    @Override
+    public List<StudentDto> getAllStudents() {
+        List<Student> studs = studRepo.findAll();
 
-    public void setStudRepo(StudentRepository studRepo) {
-        this.studRepo = studRepo;
+        return studs.stream().map(
+            (student) -> StudentMapper.mapToStudentDto(student)).
+            collect(Collectors.toList());
     }
-
+    
     
 }
