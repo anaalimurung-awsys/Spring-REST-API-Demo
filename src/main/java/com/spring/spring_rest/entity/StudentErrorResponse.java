@@ -1,5 +1,9 @@
 package com.spring.spring_rest.entity;
 
+/**
+ * 
+ * StudentErrorResponse
+ */
 public class StudentErrorResponse {
     private int status;
     private String message;

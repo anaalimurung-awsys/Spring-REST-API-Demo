@@ -3,6 +3,10 @@ package com.spring.spring_rest.mapper;
 import com.spring.spring_rest.dto.StudentDto;
 import com.spring.spring_rest.entity.Student;
 
+/**
+ * 
+ * StudentMapper
+ */
 public class StudentMapper {
     /**
      * Method that will map Student to StudentDto

@@ -7,6 +7,10 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.Table;
 
+/**
+ * POJO.
+ * Student
+ */
 @Entity 
 @Table(name="student")
 public class Student {

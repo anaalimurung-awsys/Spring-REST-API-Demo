@@ -3,6 +3,10 @@ package com.spring.spring_rest.dto;
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.Size;
 
+/**
+ * 
+ * StudentDto
+ */
 public class StudentDto {
     private Long id;
 
@@ -53,6 +57,4 @@ public class StudentDto {
     public void setEmail(String email) {
         this.email = email;
     }
-    
-    
 }

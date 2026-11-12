@@ -1,11 +1,10 @@
 package com.spring.spring_rest.service;
 
+import com.spring.spring_rest.dto.StudentDto;
 import java.util.List;
 
-import com.spring.spring_rest.dto.StudentDto;
-
 /**
- * 
+ * This is an interface.
  * StudentService
  */
 public interface StudentService {

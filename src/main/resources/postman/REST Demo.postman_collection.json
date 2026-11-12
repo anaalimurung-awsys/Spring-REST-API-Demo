@@ -13,16 +13,15 @@
         "method": "GET",
         "header": [],
         "url": {
-          "raw": "http://localhost:8080/api/students/four",
+          "raw": "http://localhost:8080/test/hello",
           "protocol": "http",
           "host": [
             "localhost"
           ],
           "port": "8080",
           "path": [
-            "api",
-            "students",
-            "four"
+            "test",
+            "hello"
           ]
         }
       },
@@ -54,6 +53,95 @@
         "method": "GET",
         "header": [],
         "url": {
+          "raw": "http://localhost:8080/api/students/7",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "8080",
+          "path": [
+            "api",
+            "students",
+            "7"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "add_students",
+      "request": {
+        "method": "POST",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n    \"firstName\": \"Nosaxa\",\r\n    \"lastName\": \"Frieje\",\r\n    \"email\": \"nosaxa.frieje@galaxyrangers.com\"\r\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "http://localhost:8080/api/students",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "8080",
+          "path": [
+            "api",
+            "students"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "update_student",
+      "request": {
+        "method": "PUT",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n    \"firstName\" : \"Lazuli\",\r\n    \"lastName\" : \"Saravo\",\r\n    \"email\" : \"lazuli.saravo@galaxyrangers.com\"\r\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "http://localhost:8080/api/students/3",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "8080",
+          "path": [
+            "api",
+            "students",
+            "3"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "patch_student",
+      "request": {
+        "method": "PATCH",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n    \"email\" : \"rei.suzuya@ccg.com\"\r\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
           "raw": "http://localhost:8080/api/students/1",
           "protocol": "http",
           "host": [
@@ -64,6 +152,27 @@
             "api",
             "students",
             "1"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "delete_student",
+      "request": {
+        "method": "DELETE",
+        "header": [],
+        "url": {
+          "raw": "http://localhost:8080/api/students/3",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "8080",
+          "path": [
+            "api",
+            "students",
+            "3"
           ]
         }
       },

@@ -1,19 +1,19 @@
 package com.spring.spring_rest.controller;
 
-import java.lang.reflect.Method;
+import com.spring.spring_rest.entity.StudentErrorResponse;
+import com.spring.spring_rest.exception.StudentNotFoundException;
 import java.util.HashMap;
 import java.util.Map;
-
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
-import org.springframework.web.servlet.mvc.method.annotation.MvcUriComponentsBuilder.MethodArgumentBuilder;
 
-import com.spring.spring_rest.entity.StudentErrorResponse;
-import com.spring.spring_rest.exception.StudentNotFoundException;
-
+/**
+ * This class implements methods to handle exceptions.
+ * StudentExceptionHandler
+ */
 @ControllerAdvice 
 public class StudentExceptionHandler {
 
